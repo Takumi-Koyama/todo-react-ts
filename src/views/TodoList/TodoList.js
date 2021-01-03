@@ -1,26 +1,16 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useContext } from 'react';
 import './TodoList.css';
+import { TodoListContext } from '../../context/TodoListContext'
 //Todoitem.jsをインポートする
 import TodoItem from '../../components/TodoItem'
 import { useHistory } from 'react-router-dom'
 
-const sampleTodoList = [
-  {
-    id: 0,
-    title: 'これはサンプル1です',
-    description: 'これはサンプル1です',
-  },
-  {
-    id: 1,
-    title: 'これはサンプル2です',
-    description: 'これはサンプル2です',
-  },
-];
-
 const TodoList = () => {
   const [title, setTitle] = useState('');
+  const {todoList, setTodoList} = useContext(TodoListContext);
   const [description, setDescription] = useState('');
-  const [todoList, setTodoList] = useState(sampleTodoList);
+
+  // const [todoList, setTodoList] = useState([]);
   const history = useHistory();
   // const todoList = sampleTodoList;
 
@@ -33,10 +23,14 @@ const TodoList = () => {
   }
 
   const clickedButton = () => {
+    let newId = 0;
+    if(todoList.length === 0) {
+      const newId = Math.max(...todoList.map((todo) => todo.id)) + 1;
+    }
     // alert(text+description);
     // alert(`title: ${title} description: ${description}`);
     //...これ何w
-    const newId = Math.max(...todoList.map((todo) => todo.id)) + 1;
+    // const newId = Math.max(...todoList.map((todo) => todo.id)) + 1;
     //インスタンスを新しく作り直さないと反映されないニューなんとか
     const newTodoList = todoList.slice();
     const newTodo = {
