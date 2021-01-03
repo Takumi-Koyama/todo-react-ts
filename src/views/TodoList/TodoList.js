@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import './TodoList.css';
 //Todoitem.jsをインポートする
 import TodoItem from '../../components/TodoItem'
+import { useHistory } from 'react-router-dom'
 
 const sampleTodoList = [
   {
@@ -20,7 +21,7 @@ const TodoList = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [todoList, setTodoList] = useState(sampleTodoList);
-
+  const history = useHistory();
   // const todoList = sampleTodoList;
 
   const changedTitle = (e) => {
@@ -66,7 +67,10 @@ const TodoList = () => {
     </div>
 
     {todoList.map((todo) => {
-      return (<TodoItem todo={todo} key={todo.id} />);
+      return (<TodoItem 
+        todo={todo} 
+        key={todo.id} 
+        onClick={() => history.push(`/edit/${todo.id}`)} />);
     })}
   </Fragment>
   );
