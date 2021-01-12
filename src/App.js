@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import TodoList from './views/TodoList/TodoList'
 import TodoEdit from './views/TodoEdit/TodoEdit'
@@ -9,7 +8,7 @@ const App = () => {
   return (
     <div className="App">
       <TodoListProvider>
-        <Router>
+        <Router>              
           <Route exact path="/" component={TodoList} />
           <Route path="/edit/:id" component={TodoEdit} />
         </Router>

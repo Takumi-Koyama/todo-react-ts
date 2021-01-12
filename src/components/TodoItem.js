@@ -2,14 +2,13 @@
 //アロー関数に書き換え
 import React from 'react'
 import './TodoItem.css'
-const obj = {
-  name: "hajime",
-  hobby: "game",
-  birthDay: "1993/01/28"
-}
-
-const { name, hobby } = obj;
-
+// const obj = {
+//   name: "hajime",
+//   hobby: "game",
+//   birthDay: "1993/01/28"
+// }
+// const { name, hobby } = obj;
+    
 const TodoItem = ({todo, onClick}) => {
   return (
     <div className="todo-item" onClick={onClick}>

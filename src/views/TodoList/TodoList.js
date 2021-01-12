@@ -25,14 +25,14 @@ const TodoList = () => {
   const clickedButton = () => {
     let newId = 0;
     if(todoList.length === 0) {
-      const newId = Math.max(...todoList.map((todo) => todo.id)) + 1;
+      newId = Math.max(...todoList.map((todo) => todo.id)) + 1;
     }
     // alert(text+description);
     // alert(`title: ${title} description: ${description}`);
     //...これ何w
     // const newId = Math.max(...todoList.map((todo) => todo.id)) + 1;
     //インスタンスを新しく作り直さないと反映されないニューなんとか
-    const newTodoList = todoList.slice();
+    const newTodoList = todoList.slice(                                         );
     const newTodo = {
       id: newId,
       title: title,

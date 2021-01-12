@@ -20,7 +20,7 @@ export const TodoListProvider = ( { children } ) => {
   return (
     <TodoListContext.Provider 
       value={{
-        todoList,
+           todoList,
         setTodoList,
       }}
     >
