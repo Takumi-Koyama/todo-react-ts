@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    //最終的に吐き出されるjavascriptのバージョン(どんなバージョンにも対応できるようにes5に変換)
+    "target": "es5",
+    "lib": [
+      //今現在最新のTypeScriptをとってくる
+      "esnext",
+      //以下二つDOM操作を許容するか
+      "dom",
+      "dom.iterable"
+    ],
+    //jsファイルを許可するか
+    "allowJs": true,
+    "skipLibCheck": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    //動きはするけど、チェックを働かせる
+    "strict": true,
+    //tsconfigからみてどこが起点となるファイルか。絶対パスが使えるようになる
+    "baseUrl": "./",
+  },
+  //どこのファイルのtsがこれらのコンパイルオプションの対象ですか？
+  "include": [
+    "./src/**/*"
+  ]
+}
