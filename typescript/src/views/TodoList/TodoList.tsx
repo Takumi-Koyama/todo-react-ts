@@ -1,27 +1,21 @@
 import styles from './TodoList.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Todo } from '../../model/Todo';
 import { TodoItem } from '../../components/TodoItem';
-
-const todos: Todo[] = [
-  {
-    id: 0,
-    title: 'Title1',
-    description: 'Description1',
-  },
-  {
-    id: 1,
-    title: 'Title2',
-    description: 'Description2',
-  },
-  {
-    id: 2,
-    title: 'Title3',
-    description: 'Description3',
-  },
-];
+import Axios from 'axios';
 
 export const TodoList: React.FC = () => {
+  const [todoList, setTodoList] = useState<Todo[]>([]);
+
+  //コンポーネントのマウント時に発動
+  useEffect(() => {
+    const getTodoList = async () => {
+      const response = await Axios.get<Todo[]>('todos');
+      setTodoList(response.data);
+    };
+    getTodoList();
+  }, [setTodoList]);
+
   return (
     <>
       <div>
@@ -31,7 +25,7 @@ export const TodoList: React.FC = () => {
           <button className={styles.todoAddButton}>Click Me!!!</button>
         </div>
       </div>
-      {todos.map((todo) => {
+      {todoList.map((todo) => {
         return <TodoItem key={todo.id} todo={todo} />;
       })}
     </>
