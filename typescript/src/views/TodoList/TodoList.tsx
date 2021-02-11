@@ -4,6 +4,7 @@ import { Todo } from 'src/model/Todo';
 import { TodoItem } from 'src/components/TodoItem';
 import Axios, { AxiosResponse } from 'axios';
 import { TodoListContext } from 'src/context/TodoListContext';
+import { useHistory } from 'react-router-dom';
 
 export const TodoList: React.FC = () => {
   // const [title, setTitle] = useState('');
@@ -15,6 +16,8 @@ export const TodoList: React.FC = () => {
   });
   // const [todoList, setTodoList] = useState<Todo[]>([]);
   const { todoList, setTodoList } = useContext(TodoListContext);
+
+  const history = useHistory();
 
   //コンポーネントのマウント時に発動
   useEffect(() => {
@@ -71,7 +74,15 @@ export const TodoList: React.FC = () => {
         </div>
       </div>
       {todoList.map((todo) => {
-        return <TodoItem key={todo.id} todo={todo} />;
+        return (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onClick={() => {
+              return history.push(`/edit/${todo.id}`);
+            }}
+          />
+        );
       })}
     </>
   );
