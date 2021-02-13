@@ -21,6 +21,8 @@
     "baseUrl": "./",
     //jsxファイルはreactで処理をするという指示
     "jsx": "react",
+    //testに必要なやつ
+    "esModuleInterop": true
   },
   //どこのファイルのtsがこれらのコンパイルオプションの対象ですか？
   "include": [
